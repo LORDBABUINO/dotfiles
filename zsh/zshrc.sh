@@ -7,6 +7,8 @@
 	git config --global push.default current
 
 # Aliases
+	alias cl="clear"
+	alias ll="ls -la"
 	alias v="vim -p"
 	mkdir -p /tmp/log
 	

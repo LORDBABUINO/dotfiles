@@ -1,9 +1,11 @@
 " General Vim settings
 	syntax on
 	let mapleader=","
-	set autoindent
-	set tabstop=4
-	set shiftwidth=4
+	set noexpandtab
+	set smartindent
+	set softtabstop=-1
+	set tabstop=2
+	set shiftwidth=2
 	set dir=/tmp/
 	set relativenumber 
 	set number
@@ -114,3 +116,5 @@
 	"Swap line
 	"Insert blank below and above
 
+"Make copy/paste from clipboard by pressing y or p
+set clipboard=unnamedplus
