@@ -24,11 +24,6 @@
 	nnoremap n nzzzv
 	nnoremap N Nzzzv
 
-	nnoremap H 0
-	nnoremap L $
-	nnoremap J G
-	nnoremap K gg
-
 	map <tab> %
 
 	set backspace=indent,eol,start
@@ -76,6 +71,12 @@
 	" Markup
 		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
 
+	" Ruby on Rails
+		autocmd FileType ruby map ,t :!docker exec task-manager-api_web_1 bundle exec spring rspec
+
+	" Markdown
+		autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+
 
 " File and Window Management 
 	inoremap <leader>w <Esc>:w<CR>
@@ -112,9 +113,19 @@
 	autocmd FileChangedShellPost *
 	  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-" Future stuff
-	"Swap line
-	"Insert blank below and above
-
 "Make copy/paste from clipboard by pressing y or p
 set clipboard=unnamedplus
+
+map <Enter><Enter> o<Esc>
+
+"Make tab-completion for file related task
+set path+=**
+
+"Display all matching files when we tab complete
+set wildmenu
+
+" Spell-check set to F6:
+	map <F6> :setlocal spell! spelllang=en_us,pt_br<CR>
+
+" Replace all is aliased to S.
+	nnoremap S :%s//g<Left><Left>
