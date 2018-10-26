@@ -10,7 +10,7 @@
 
 # Aliases
 	alias cl="clear"
-	alias ll="ls -la"
+	alias ll="ls -l -a"
 	alias v="vim -p"
 	mkdir -p /tmp/log
 	
