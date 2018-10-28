@@ -72,7 +72,7 @@
 		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
 
 	" Ruby on Rails
-		autocmd FileType ruby map ,t :!docker exec task-manager-api_web_1 bundle exec spring rspec
+		autocmd FileType ruby set makeprg=docker\ exec\ rails_web_1\ bundle\ exec\ spring\ rspec\ -f\ QuickfixFormatter
 
 	" Markdown
 		autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
@@ -129,3 +129,6 @@ set wildmenu
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
+
+"Create the `tags` file (may need to install ctags first)
+	command! MakeTags !ctags -R .
