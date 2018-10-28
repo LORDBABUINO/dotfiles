@@ -8,10 +8,6 @@
 
 	git config --global push.default current
 
-# Aliases
-	alias cl="clear"
-	alias ll="ls -l -a"
-	alias v="vim -p"
 	mkdir -p /tmp/log
 	
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
@@ -88,5 +84,11 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 	zle -N down-line-or-beginning-search
 	bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
+
+# Aliases
+	alias ls="ls --group-directories-first --color"
+	alias cl="clear"
+	alias ll="ls -l -a"
+	alias v="vim -p"
 
 export PATH=$PATH:$HOME/dotfiles/utils
