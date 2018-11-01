@@ -1,11 +1,6 @@
 " General Vim settings
 	syntax on
 	let mapleader=","
-	set noexpandtab
-	set smartindent
-	set softtabstop=-1
-	set tabstop=2
-	set shiftwidth=2
 	set dir=/tmp/
 	set relativenumber 
 	set number
@@ -40,6 +35,9 @@
 	set incsearch
 
 " Language Specific
+	" Snippets
+		so ~/dotfiles/vim/snipets.vim
+
 	" Tabs
 		so ~/dotfiles/vim/tabs.vim
 
@@ -72,10 +70,14 @@
 		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
 
 	" Ruby on Rails
-		autocmd FileType ruby set makeprg=docker\ exec\ rails_web_1\ bundle\ exec\ spring\ rspec\ -f\ QuickfixFormatter
+		autocmd FileType ruby set makeprg=docker\ exec\ rails_web\ bundle\ exec\ spring\ rspec\ --require\ ./quickfix_formatter.rb\ -f\ QuickfixFormatter
 
 	" Markdown
 		autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
+
+	"Json
+		autocmd Filetype json map ;cp :!curl -v -d  '@%' -H "Content-Type: application/json" -X POST  \| json_pp<left><left><left><left><left><left><left><left><left><left>
+		autocmd Filetype json map ;cu :!curl -v -d  '@%' -H "Content-Type: application/json" -X PUT  \| json_pp<left><left><left><left><left><left><left><left><left><left>
 
 
 " File and Window Management 
@@ -132,3 +134,9 @@ set wildmenu
 
 "Create the `tags` file (may need to install ctags first)
 	command! MakeTags !ctags -R .
+
+"Disable annoing banner from netrw
+	let g:netrw_banner=0
+
+"Netrw tree view
+	let g:netrw_liststyle=3
